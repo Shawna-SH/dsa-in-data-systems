@@ -158,3 +158,9 @@ Use one pointer at the beginning and one at the end. Swap the two elements and m
 - All elements are processed once → **Θ(n)** time
 
 > Two pointers reduce unnecessary work by coordinating movement from both ends or at different speeds.
+
+**Example: Palindrome Check ([is_palindrome](notes.py#L97-127))**
+Use two pointers to compare elements from both ends.
+
+- if mismatch → return False immediately
+- if all pairs match → return True

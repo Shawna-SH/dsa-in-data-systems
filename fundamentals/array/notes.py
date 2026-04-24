@@ -94,6 +94,37 @@ def reverse_array(arr):
 
     return arr
 
+def is_palindrome(arr):
+    """
+    Check whether an array is a palindrome using two pointers.
+
+    This function compares elements from both ends of the array.
+    If any pair does not match, it returns False immediately.
+
+    Args:
+        arr (list): A list of elements.
+
+    Returns:
+        bool: True if the array is a palindrome, False otherwise.
+
+    Time Complexity:
+        O(n) worst case
+        Ω(1) best case
+
+    Space Complexity:
+        O(1)
+    """
+    left = 0
+    right = len(arr) - 1
+
+    while left < right:
+        if arr[left] != arr[right]:
+            return False
+
+        left += 1
+        right -= 1
+
+    return True
 
 if __name__ == "__main__":
     array = [3, 1, 4, 1, 5, 9]
