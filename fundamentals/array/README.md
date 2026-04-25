@@ -164,3 +164,24 @@ Use two pointers to compare elements from both ends.
 
 - if mismatch → return False immediately
 - if all pairs match → return True
+
+**Example: [Container With Most Water](https://leetcode.com/problems/container-with-most-water) ([max_area](notes.py#L129-156))**
+
+Use two pointers starting from both ends of the array.
+
+At each step:
+- calculate current area
+- move the pointer with the smaller height
+
+**Why it works**
+
+The area is limited by the shorter line.
+
+- Moving the taller line cannot increase the height
+- It only reduces width → area will not improve
+
+Therefore:
+> Only moving the shorter line can potentially increase the area
+
+- Time: **Θ(n)**
+- Space: **O(1)**

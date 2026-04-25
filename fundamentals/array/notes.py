@@ -126,6 +126,35 @@ def is_palindrome(arr):
 
     return True
 
+def max_area(height):
+    """
+    Find the maximum area of water a container can store.
+
+    Uses two pointers starting from both ends. At each step, the pointer
+    with the smaller height is moved inward, since the area is limited
+    by the shorter line.
+
+    Time Complexity:
+        Θ(n)
+
+    Space Complexity:
+        O(1)
+    """
+    left = 0
+    right = len(height) - 1
+    max_area = 0
+
+    while left < right:
+        current_area = (right - left) * min(height[left], height[right])
+        max_area = max(max_area, current_area)
+
+        if height[left] < height[right]:
+            left += 1
+        else:
+            right -= 1
+
+    return max_area
+
 if __name__ == "__main__":
     array = [3, 1, 4, 1, 5, 9]
     print(find_max(array))  # Output: 9
