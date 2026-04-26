@@ -151,6 +151,7 @@ Two pointers help:
 - often achieve **Θ(n)** time with a single pass
 
 **Example: Reverse an array ([reverse_array](notes.py#L65-95))**
+
 Use one pointer at the beginning and one at the end. Swap the two elements and move both pointers toward the center.
 
 - Each swap fixes two elements
@@ -160,6 +161,7 @@ Use one pointer at the beginning and one at the end. Swap the two elements and m
 > Two pointers reduce unnecessary work by coordinating movement from both ends or at different speeds.
 
 **Example: Palindrome Check ([is_palindrome](notes.py#L97-127))**
+
 Use two pointers to compare elements from both ends.
 
 - if mismatch → return False immediately
@@ -185,3 +187,28 @@ Therefore:
 
 - Time: **Θ(n)**
 - Space: **O(1)**
+
+#### 7.4. Sliding Window
+
+Sliding window is a technique for processing a contiguous subarray efficiently.
+It can be seen as a specialized form of two pointers.
+
+However, unlike basic two pointers that focus on pointer movement,
+sliding window maintains a dynamic "window state" (e.g., sum, count, frequency).
+
+Key idea:
+
+- Expand window by moving right pointer
+- Shrink window by moving left pointer
+- Maintain some property of the current window
+
+> Sliding Window = Two Pointers + State Maintenance
+
+**Example: Maximum Sum Subarray of Size k ([max_subarray_sum_k](notes.py#L158-181))**
+
+Time Complexity: Θ(n)  
+Space Complexity: O(1)
+
+**Key Insight**
+
+> Reuse previous computation instead of recomputing the entire window.

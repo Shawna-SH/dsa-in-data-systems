@@ -155,6 +155,31 @@ def max_area(height):
 
     return max_area
 
+def max_subarray_sum_k(arr, k):
+    """
+    Find the maximum sum of any subarray of size k.
+
+    Uses a sliding window to avoid recomputing sums.
+
+    Time Complexity:
+        Θ(n)
+
+    Space Complexity:
+        O(1)
+    """
+    n = len(arr)
+    if n < k:
+        return None
+
+    window_sum = sum(arr[:k])
+    max_sum = window_sum
+
+    for i in range(k, n):
+        window_sum = window_sum - arr[i - k] + arr[i]
+        max_sum = max(max_sum, window_sum)
+
+    return max_sum
+
 if __name__ == "__main__":
     array = [3, 1, 4, 1, 5, 9]
     print(find_max(array))  # Output: 9
