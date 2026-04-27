@@ -180,6 +180,43 @@ def max_subarray_sum_k(arr, k):
 
     return max_sum
 
+def length_of_longest_substring(s):
+    """
+    Find the length of the longest substring without repeating characters.
+
+    This function uses a sliding window and a set to maintain the current
+    substring without duplicates. The right pointer expands the window, and
+    the left pointer shrinks the window when a duplicate character appears.
+
+    Args:
+        s (str): Input string.
+
+    Returns:
+        int: Length of the longest substring without repeating characters.
+
+    Time Complexity:
+        Θ(n)
+
+    Space Complexity:
+        O(k), where k is the number of unique characters in the current window.
+    """
+    seen = set()
+    left = 0
+    max_length = 0
+
+    for right in range(len(s)):
+        while s[right] in seen:
+            seen.remove(s[left])
+            left += 1
+
+        seen.add(s[right])
+        max_length = max(max_length, right - left + 1)
+
+    return max_length
+
+
 if __name__ == "__main__":
-    array = [3, 1, 4, 1, 5, 9]
-    print(find_max(array))  # Output: 9
+    print(length_of_longest_substring("abcabcbb"))  # 3
+    print(length_of_longest_substring("bbbbb"))     # 1
+    print(length_of_longest_substring("pwwkew"))    # 3
+    print(length_of_longest_substring(""))          # 0

@@ -212,3 +212,32 @@ Space Complexity: O(1)
 **Key Insight**
 
 > Reuse previous computation instead of recomputing the entire window.
+
+**Example: [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)**
+
+Given a string, find the length of the longest substring that contains no repeated characters.
+
+**Why Sliding Window?**
+
+The problem asks for a contiguous substring, so we can use a window [left ... right] 
+which satisties "no duplicate characters".
+
+We expand the window by moving right.
+If a duplicate appears, we shrink the window by moving left.
+
+**Why Use a Set?**
+
+A set is used to track the characters currently inside the window.
+
+It allows:
+
+* O(1) membership check
+* O(1) insertion
+* O(1) removal
+
+Without a set, checking whether a character already exists in the current window would require scanning the substring repeatedly, leading to a less efficient solution.
+
+* Time Complexity: Θ(n)
+    Each character is added and removed at most once.
+* Space Complexity: O(k)
+    where k is the number of unique characters in the current window.
