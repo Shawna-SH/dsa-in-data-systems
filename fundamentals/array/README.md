@@ -1,6 +1,8 @@
 # Array
 An array is a **linear** data structure that stores elements in **contiguous memory** locations and allows **direct access using indices**.
 
+---
+
 ## Basics
 
 Because elements in an array are stored in **contiguous memory**, once the index is known, the position of an element can be calculated directly. Therefore, accessing an element has a time complexity of **O(1)**.
@@ -15,6 +17,8 @@ In the worst case, up to **n elements** (where *n* is the length of the array) n
 Therefore:
 
 > Arrays are efficient for **read operations** (including random access and scanning), but are not suitable for scenarios with frequent insertions or deletions.
+
+---
 
 ## Common Operations
 
@@ -106,8 +110,10 @@ Best case: **Ω(1)** (deleting the last element)
 my_array.pop(i)
 ```
 
-### 7. Basic Algorithms
-#### 7.1. Scan + Track Maximum ([find_max](notes.py#L1-30))
+---
+
+## Basic Algorithms
+### 1. Scan + Track Maximum ([find_max](notes.py#L1-30))
 
 To find the maximum value in an array, we must examine every element:
 
@@ -123,7 +129,7 @@ This pattern is **commonly used** in:
 - Tracking best values
 - Optimization problems
 
-#### 7.2. Scan + Collect ([find_all_occurrences](notes.py#L32-63))
+### 2. Scan + Collect ([find_all_occurrences](notes.py#L32-63))
 
 To find all occurrences of a target value in an array:
 
@@ -135,7 +141,7 @@ Since duplicates may exist, the algorithm cannot stop early.
 **Time Complexity**: Θ(n)  
 **Space Complexity**: O(k)
 
-#### 7.3. Two Pointers
+### 3. Two Pointers
 
 Two pointers is a common array technique that uses two indices to traverse or modify an array efficiently.
 
@@ -150,7 +156,7 @@ Two pointers help:
 - avoid unnecessary work by processing elements from both ends
 - often achieve **Θ(n)** time with a single pass
 
-**Example: Reverse an array ([reverse_array](notes.py#L65-95))**
+#### Example: Reverse an array ([reverse_array](notes.py#L65-95))
 
 Use one pointer at the beginning and one at the end. Swap the two elements and move both pointers toward the center.
 
@@ -160,14 +166,14 @@ Use one pointer at the beginning and one at the end. Swap the two elements and m
 
 > Two pointers reduce unnecessary work by coordinating movement from both ends or at different speeds.
 
-**Example: Palindrome Check ([is_palindrome](notes.py#L97-127))**
+#### Example: Palindrome Check ([is_palindrome](notes.py#L97-127))
 
 Use two pointers to compare elements from both ends.
 
 - if mismatch → return False immediately
 - if all pairs match → return True
 
-**Example: [Container With Most Water](https://leetcode.com/problems/container-with-most-water) ([max_area](notes.py#L129-156))**
+#### Example: [Container With Most Water](https://leetcode.com/problems/container-with-most-water) ([max_area](notes.py#L129-156))
 
 Use two pointers starting from both ends of the array.
 
@@ -188,7 +194,7 @@ Therefore:
 - Time: **Θ(n)**
 - Space: **O(1)**
 
-#### 7.4. Sliding Window
+### 4. Sliding Window
 
 Sliding window is a technique for processing a contiguous subarray efficiently.
 It can be seen as a specialized form of two pointers.
@@ -204,7 +210,7 @@ Key idea:
 
 > Sliding Window = Two Pointers + State Maintenance
 
-**Example: Maximum Sum Subarray of Size k ([max_subarray_sum_k](notes.py#L158-181))**
+#### Example: Maximum Sum Subarray of Size k ([max_subarray_sum_k](notes.py#L158-181))
 
 Time Complexity: Θ(n)  
 Space Complexity: O(1)
@@ -213,7 +219,7 @@ Space Complexity: O(1)
 
 > Reuse previous computation instead of recomputing the entire window.
 
-**Example: [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)**
+#### Example: [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
 
 Given a string, find the length of the longest substring that contains no repeated characters.
 
