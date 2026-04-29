@@ -200,7 +200,10 @@ def length_of_longest_substring(s):
     Space Complexity:
         O(k), where k is the number of unique characters in the current window.
     """
-    seen = set()
+    seen = set()  
+    # use hash set to track elements in the current window
+    # allows O(1) membership check instead of O(n) scanning
+    
     left = 0
     max_length = 0
 
