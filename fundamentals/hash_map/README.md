@@ -2,6 +2,14 @@
 
 A hash map (dictionary) is a data structure that stores key–value pairs and allows fast lookup based on keys.
 
+Unlike an array that stores values mainly by position, a hash map stores data in an underlying bucket array. A key is passed through a hash function, and the hash value is used to calculate which bucket should store or retrieve the key–value pair.
+
+The underlying bucket array itself is array-like, but the key–value entries are not accessed by sequential scanning. Instead, the hash map uses:
+
+> key → hash function → bucket/index → key–value pair
+
+If multiple keys map to the same bucket, this is called a **collision**. Collisions are handled by strategies such as chaining or open addressing, so the hash map can still find the target key.
+
 Example:
 
 ```python
@@ -46,8 +54,53 @@ A hash map achieves **O(1)** average lookup by using a hash function.
 
 > key → hash → index → O(1) lookup
 
-**Collisions** may occur when multiple keys map to the same index, but are handled using techniques like chaining or open addressing.
-
 ```python
 value = my_dict[key]
 ```
+
+### 2. Insert / Update
+
+Add or update a key–value pair.
+
+- If the key does not exist → insert
+- If the key exists → update (overwrite)
+
+Time Complexity: **O(1)** (average)
+
+```python
+my_dict[key] = value
+```
+
+### 3. Delete
+
+Remove a key–value pair from the hash map.
+
+- If the key exists → the key–value pair is removed
+- If the key does not exist → a KeyError will be raised (in Python)
+
+Time Complexity: **O(1)** (average)
+
+This is because the hash function maps the key to the relevant bucket/index directly, so the hash map does not need to scan all key–value pairs after deletion.
+
+```python
+del my_dict[key]
+
+# Alternatively, to avoid errors when the key may not exist:
+my_dict.pop(key, None)
+```
+
+### 4. Membership Check
+
+Check whether a **key** exists in the hash map.
+
+Time Complexity: **O(1)** (average)
+
+This works by hashing the key and directly locating and checking the corresponding bucket, avoiding a full scan.
+
+```python
+if key in my_dict:
+    ...
+```
+
+> Note: This checks keys, not values.
+> To check values, use `my_dict.values()`, which requires scanning all values and takes **O(n)** time.
