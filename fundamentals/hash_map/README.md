@@ -102,5 +102,5 @@ if key in my_dict:
     ...
 ```
 
-> Note: This checks keys, not values.
+> **Note**: This checks keys, not values.  
 > To check values, use `my_dict.values()`, which requires scanning all values and takes **O(n)** time.
