@@ -104,3 +104,40 @@ if key in my_dict:
 
 > **Note**: This checks keys, not values.  
 > To check values, use `my_dict.values()`, which requires scanning all values and takes **O(n)** time.
+
+## Basic Algorithms
+
+### 4. Complement Search ([Two Sum](https://leetcode.com/problems/two-sum/description/))
+
+Given an array `nums` and a target value, find two indices such that:
+
+```text
+nums[i] + nums[j] = target
+```
+
+**Idea**
+
+For each element `a`, compute its complement:
+
+```text
+b = target - a
+```
+
+Use a hash map to store previously seen values and their indices.
+
+- If `b` already exists in the map → we found the answer
+- Otherwise, store `a` in the map
+
+**Why Hash Map?**
+
+We need to quickly check whether the complement exists.
+
+- Array: requires scanning → O(n)
+- Hash map: membership check → O(1)
+
+This reduces the overall complexity from O(n²) to Θ(n).
+
+- Time Complexity: **Θ(n)**
+- Space Complexity: **O(n)**
+
+> Store values you have seen so far, so you can answer future queries in O(1).
