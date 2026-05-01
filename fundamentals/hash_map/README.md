@@ -105,9 +105,11 @@ if key in my_dict:
 > **Note**: This checks keys, not values.  
 > To check values, use `my_dict.values()`, which requires scanning all values and takes **O(n)** time.
 
+---
+
 ## Basic Algorithms
 
-### 4. Complement Search ([Two Sum](https://leetcode.com/problems/two-sum/description/))
+### 1. Complement Search ([Two Sum](https://leetcode.com/problems/two-sum/description/))
 
 Given an array `nums` and a target value, find two indices such that:
 
@@ -141,3 +143,72 @@ This reduces the overall complexity from O(n²) to Θ(n).
 - Space Complexity: **O(n)**
 
 > Store values you have seen so far, so you can answer future queries in O(1).
+
+### 2. Frequency Counting ([Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/description/))
+
+Given an array `arr` and an integer `k`, return the `k` most frequent elements.
+
+```text
+arr = ["a", "a", "a", "b", "b", "c"], k = 2
+→ ["a", "b"]
+```
+
+**Idea**
+
+This problem can be solved in two steps:
+
+1. **Count frequencies using a hash map**
+
+```text
+value → frequency
+```
+
+Example:
+
+```python
+{
+    "a": 3,
+    "b": 2,
+    "c": 1
+}
+```
+
+2. **Group elements by frequency using buckets**
+
+We create an array where the index represents the frequency:
+
+```python
+buckets = [[], [], [], [], ...]
+```
+
+Then place elements into the corresponding bucket:
+
+```python
+buckets[3] = ["a"]
+buckets[2] = ["b"]
+buckets[1] = ["c"]
+```
+
+**Algorithm**
+
+- Count frequency of each element using a hash map
+- Create buckets where index = frequency
+- Traverse buckets from high to low frequency
+- Collect elements until k elements are found
+
+**Why Not Sort?**
+
+Sorting all elements by frequency would take:
+
+```text
+O(n log n)
+```
+
+Using buckets avoids sorting and reduces the complexity to linear time.
+
+**Complexity**
+
+- Time Complexity: **Θ(n)**
+- Space Complexity: **O(n)**
+
+Each element is processed a constant number of times, and all bucket elements are visited at most once.
