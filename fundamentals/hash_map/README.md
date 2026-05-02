@@ -213,7 +213,7 @@ Using buckets avoids sorting and reduces the complexity to linear time.
 
 Each element is processed a constant number of times, and all bucket elements are visited at most once.
 
-### 3. Prefix Sum + Hash Map (Subarray Sum Equals K)
+### 3. Prefix Sum + Hash Map ([Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/))
 
 Given an array `nums` and an integer `k`, count how many contiguous subarrays have a sum equal to `k`.
 
