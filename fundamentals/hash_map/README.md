@@ -212,3 +212,61 @@ Using buckets avoids sorting and reduces the complexity to linear time.
 - Space Complexity: **O(n)**
 
 Each element is processed a constant number of times, and all bucket elements are visited at most once.
+
+### 3. Prefix Sum + Hash Map (Subarray Sum Equals K)
+
+Given an array `nums` and an integer `k`, count how many contiguous subarrays have a sum equal to `k`.
+
+```text
+nums = [1, 1, 1], k = 2
+→ 2
+```
+
+The valid subarrays are:
+
+```text
+nums[0:2] = [1, 1]
+nums[1:3] = [1, 1]
+```
+
+**Idea**
+
+A prefix sum represents the cumulative sum from the start of the array to the current position.
+
+If a subarray sum equals k, then:
+
+```text
+current_sum - previous_sum = k
+
+# Rearranged:
+previous_sum = current_sum - k
+```
+
+So, at each position, we check how many previous prefix sums equal current_sum - k.
+
+**Why Hash Map?**
+
+We use a hash map to store how many times each prefix sum has appeared.
+
+This allows us to check whether `current_sum - k` has appeared before in **O(1)** average time.
+
+**Algorithm**
+
+* Initialize prefix_count = {0: 1}
+* Keep a running current_sum
+* For each number:
+    * Add it to current_sum
+    * Compute need = current_sum - k
+    * Add prefix_count[need] to the answer if it exists
+    * Update the count of current_sum
+
+**Complexity**
+
+* Time Complexity: Θ(n)
+* Space Complexity: O(n)
+
+Each element is processed once, and the hash map stores prefix sums seen so far.
+
+**Key Insight**
+
+> A subarray sum can be represented as the difference between two prefix sums.
