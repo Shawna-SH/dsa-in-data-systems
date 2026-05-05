@@ -17,6 +17,7 @@ The goal of this repository is to:
 * Build a strong foundation in data structures and algorithms
 * Understand how these concepts are applied in real data workflows
 * Improve problem-solving skills for data-related tasks
+* Develop a pattern-based approach to solving problems
 
 ## 🛠️ Tech Stack
 
@@ -25,6 +26,15 @@ The goal of this repository is to:
 
 ## 🚀 Ongoing Work
 
-This is a continuously evolving repository where I regularly add new topics, problems, and insights as I learn.
+This is a continuously evolving repository where new topics, problems, and insights are added regularly.
 
-[] array
+Current focus:
+
+- Arrays → patterns (two pointers, sliding window)
+- Hash maps → problem patterns
+- Transition to more advanced structures (trees, graphs)
+
+## 📌 Notes
+
+- Emphasis is placed on understanding *why* an approach works, not just implementation.
+- Each solution is written with clear reasoning, complexity analysis, and reusable insights.
