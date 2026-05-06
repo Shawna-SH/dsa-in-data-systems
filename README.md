@@ -24,15 +24,20 @@ The goal of this repository is to:
 * Python
 * SQL
 
-## 🚀 Ongoing Work
+## 🚀 Progress
 
 This is a continuously evolving repository where new topics, problems, and insights are added regularly.
 
+Completed in the current phase:
+
+- Arrays / dynamic array basics and core patterns
+- Hash maps and common problem-solving patterns
+
 Current focus:
 
-- Arrays → patterns (two pointers, sliding window)
-- Hash maps → problem patterns
-- Transition to more advanced structures (trees, graphs)
+- Trees → traversal, recursion, DFS/BFS
+- Graphs → representation, traversal, connected components
+- SQL and data-oriented problem patterns
 
 ## 📌 Notes
 
