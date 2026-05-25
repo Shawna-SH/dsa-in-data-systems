@@ -132,3 +132,135 @@ In a complete binary tree:
 - nodes in the last level are placed as far left as possible
 
 This shape becomes especially important later when studying heaps.
+
+---
+
+## Basic Operations
+
+Tree operations are different from array operations.
+
+In an array, we often think about:
+
+- index
+- position
+- left-to-right scanning
+
+In a tree, we usually think about:
+
+- the current node
+- its `left` child
+- its `right` child
+- how to process its subtrees
+
+Common ideas in tree operations:
+
+- Represent a node with a value and references to child nodes
+- Check whether a node is empty (`None`)
+- Search by exploring the structure of the tree
+- Insert or delete according to the rules of the specific tree type
+- Traverse the whole tree in some order
+
+An important difference:
+
+- Arrays are mainly about **position**
+- Trees are mainly about **relationships**
+
+---
+
+## Recursive Thinking on Trees
+
+Tree problems are often solved with recursion because:
+
+- a whole tree is a tree
+- each subtree is also a tree
+
+When solving a tree problem, a useful pattern is:
+
+```text
+solve(node):
+    1. Handle the empty node
+    2. Process the current node
+    3. Solve the left subtree
+    4. Solve the right subtree
+    5. Combine the results
+```
+
+The most common base case is:
+
+```text
+node is None
+```
+
+For example, if we want to count the number of nodes:
+
+```text
+count(node) = 1 + count(node.left) + count(node.right)
+```
+
+And the base case is:
+
+```text
+count(None) = 0
+```
+
+This means:
+
+- an empty node contributes `0`
+- a non-empty node contributes `1`
+- the final answer comes from combining the left and right subtree results
+
+A good way to think about recursion is:
+
+- the function solves the problem for the subtree rooted at `node`
+- the current level trusts the recursive calls to solve the left and right subtrees correctly
+
+---
+
+## Tree Traversal
+
+Traversal means visiting every node in a tree in some order.
+
+Unlike arrays, trees do not have only one natural traversal order because a tree
+branches into subtrees.
+
+### DFS
+
+Depth-first search (DFS) explores one branch deeply before backtracking.
+
+For a binary tree, the three common DFS orders are:
+
+- **Preorder**: `current -> left -> right`
+- **Inorder**: `left -> current -> right`
+- **Postorder**: `left -> right -> current`
+
+Using this tree:
+
+```text
+        A
+       / \
+      B   C
+     / \
+    D   E
+```
+
+The traversal orders are:
+
+- **Preorder**: `A B D E C`
+- **Inorder**: `D B E A C`
+- **Postorder**: `D E B C A`
+
+These three traversals visit the same nodes, but the position of the
+**current node** is different.
+
+### BFS
+
+Breadth-first search (BFS) visits nodes level by level.
+
+For the same tree:
+
+- **BFS / Level-order**: `A B C D E`
+
+### DFS vs BFS
+
+- **DFS**: go deep first, then backtrack
+- **BFS**: visit one level at a time
