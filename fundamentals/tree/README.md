@@ -264,3 +264,112 @@ For the same tree:
 
 - **DFS**: go deep first, then backtrack
 - **BFS**: visit one level at a time
+
+---
+
+## Why DFS Uses Recursion / Stack and BFS Uses Queue
+
+The implementation style follows the traversal behavior.
+
+### DFS and Stack
+
+DFS tries to go as deep as possible before returning.
+
+This matches **stack** behavior:
+
+- the most recently discovered task is handled first
+- this is **LIFO**: last in, first out
+
+Recursion is a natural fit for DFS because recursive calls are managed by the
+call stack.
+
+So, conceptually:
+
+- **DFS** = go deep first
+- **Stack / Recursion** = natural tool for that behavior
+
+### BFS and Queue
+
+BFS visits nodes level by level.
+
+This matches **queue** behavior:
+
+- nodes discovered earlier are processed earlier
+- this is **FIFO**: first in, first out
+
+So, conceptually:
+
+- **BFS** = process one level at a time
+- **Queue** = natural tool for that behavior
+
+### Intuition
+
+- **DFS** is like walking down one path in a maze until you must return
+- **BFS** is like a wave expanding level by level
+
+---
+
+## When to Use Preorder, Inorder, and Postorder
+
+The three DFS traversals differ only in where the **current node** is processed,
+but that difference affects what each order is useful for.
+
+### Preorder
+
+Order:
+
+```text
+current -> left -> right
+```
+
+Use preorder when you want to:
+
+- process the current node immediately
+- pass information from parent to children
+- think in a top-down way
+
+Short intuition:
+
+- **Preorder** = first process the current node, then go down
+
+### Inorder
+
+Order:
+
+```text
+left -> current -> right
+```
+
+This traversal is especially important in a **binary search tree (BST)**.
+
+In a BST:
+
+- values in the left subtree are smaller
+- values in the right subtree are larger
+
+So inorder traversal visits values in **sorted order**.
+
+Short intuition:
+
+- **Inorder** = left side, then current node, then right side
+- in a BST, this gives an ordered result
+
+### Postorder
+
+Order:
+
+```text
+left -> right -> current
+```
+
+Use postorder when the current node depends on results from its children.
+
+This is common in problems such as:
+
+- computing height
+- checking balance
+- combining subtree results
+
+Short intuition:
+
+- **Postorder** = let the children finish first, then process the current node
