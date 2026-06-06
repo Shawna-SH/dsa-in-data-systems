@@ -373,3 +373,153 @@ This is common in problems such as:
 Short intuition:
 
 - **Postorder** = let the children finish first, then process the current node
+
+---
+
+## Binary Search Tree (BST)
+
+A binary search tree is a special kind of binary tree with an ordering rule:
+
+- all values in the left subtree are smaller than the current node
+- all values in the right subtree are larger than the current node
+
+This rule applies to the **entire** left subtree and the **entire** right
+subtree, not only to the direct children.
+
+Example:
+
+```text
+        8
+       / \
+      3   10
+     / \    \
+    1   6    14
+       / \   /
+      4   7 13
+```
+
+### Why BST Matters
+
+The ordering rule allows search to be more efficient than in a general binary
+tree.
+
+At each node:
+
+- if `target < current`, go left
+- if `target > current`, go right
+- if equal, the target is found
+
+This means BST search can narrow the search space step by step instead of
+blindly exploring both sides.
+
+### Inorder Traversal in BST
+
+In a BST, inorder traversal produces values in sorted order because:
+
+- the left subtree contains smaller values
+- the current node is in the middle
+- the right subtree contains larger values
+
+So:
+
+```text
+inorder = sorted order (for a BST)
+```
+
+### Balanced vs Skewed BST
+
+BST efficiency depends not only on the ordering rule, but also on shape.
+
+- A balanced BST can support efficient search
+- A skewed BST can degenerate into something close to a linked list
+
+---
+
+## BST Search
+
+BST search follows the ordering rule:
+
+- if the target is smaller, go left
+- if the target is larger, go right
+- if the target matches the current node, return it
+- if we reach `None`, the target does not exist
+
+This is the main advantage of BST over a general binary tree.
+
+---
+
+## BST Insert
+
+BST insert follows almost the same path as BST search.
+
+To insert a value:
+
+- start from the root
+- compare the value with the current node
+- go left if the value is smaller
+- go right if the value is larger
+- stop when the correct `None` position is found
+- insert the new node there
+
+So the idea is:
+
+- **search** looks for whether a value exists
+- **insert** looks for where a value should be placed
+
+In recursive form, insert is naturally a subtree problem:
+
+- insert into the left subtree, or
+- insert into the right subtree
+
+and return the updated subtree root.
+
+---
+
+## BST Delete
+
+BST delete is more complex than search and insert because it must remove the
+node while keeping the BST ordering rule valid.
+
+There are three main cases.
+
+### Case 1: Delete a Leaf
+
+If the node has no children, remove it directly.
+
+### Case 2: Delete a Node with One Child
+
+If the node has exactly one child, let that child take its place.
+
+In other words:
+
+- if there is no left child, return the right child
+- if there is no right child, return the left child
+
+### Case 3: Delete a Node with Two Children
+
+This is the most important BST delete case.
+
+We usually:
+
+1. find the inorder successor
+2. replace the current node's value with the successor's value
+3. delete the original successor node from the right subtree
+
+The inorder successor is:
+
+- the smallest value greater than the current node
+- the minimum value in the right subtree
+- the leftmost node in the right subtree
+
+Why this works:
+
+- the successor is the next valid value larger than the current node
+- it can safely replace the deleted node's value
+- deleting the successor from its original location is easier because it cannot
+  have a left child
+
+Short summary:
+
+- `0 child`: remove it
+- `1 child`: promote the child
+- `2 children`: replace with successor, then delete successor
